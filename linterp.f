@@ -26,7 +26,8 @@
          numpts=numpts+1
          xpt(numpts)=xtmp
          ypt(numpts)=ytmp
-         print *, numpts, '  ', xpt(numpts), '  ', ypt(numpts)
+* If you need to see the input data, ucomment the following line
+*         print *, numpts, '  ', xpt(numpts), '  ', ypt(numpts)
          goto 100
 200   continue
       close(15)
