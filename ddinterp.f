@@ -53,12 +53,20 @@
 
       call divdif(xpt, F, MAXPTS, numpts)
 
-* Now compute values of interpolating polynomial
+* Now compute values of interpolating polynomial and print them
+* to a file
+
+      open (unit=15, file='fit.dat', status='unknown')
 
       do 30 i = 1, MAXVAL
-         print *, x(i),  interp(numpts, xpt, ypt, F, MAXPTS, x(i) )
+         write (15,*) x(i),  interp(numpts, xpt, ypt, F, MAXPTS, x(i) )
 30    continue
 
+      close(15)
+   
+      print *, " -- Results in file fit.dat -- "
+
+ 
       end
 
 

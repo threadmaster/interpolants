@@ -26,8 +26,7 @@
          numpts=numpts+1
          xpt(numpts)=xtmp
          ypt(numpts)=ytmp
-* If you need to see the input data, ucomment the following line
-*         print *, numpts, '  ', xpt(numpts), '  ', ypt(numpts)
+         print *, numpts, '  ', xpt(numpts), '  ', ypt(numpts)
          goto 100
 200   continue
       close(15)
@@ -49,11 +48,19 @@
          x(i) = x(i-1) + delx
 20    continue
 
-* Nom compute values of interpolating polynomial
+* Nom compute values of interpolating polynomial and print them to 
+* a file
+
+
+      open (unit=15, file='fit.dat', status='unknown')
 
       do 30 i = 1, MAXVAL
-         print *, x(i),  interp(numpts, xpt, ypt, x(i) )
+         write (15,*)  x(i),  interp(numpts, xpt, ypt, x(i) )
 30    continue
+
+      close(15)
+
+      print *, " -- Results in file fit.dat --"
 
       end
 
